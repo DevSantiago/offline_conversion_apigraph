@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://gitlab.com/adsmurai/solutions-engineering/cariola-offline-conversions/issues"
   },
-  "homepage": "https://gitlab.com/adsmurai/solutions-engineering/cariola-offline-conversions#readme"
+  "homepage": "https://gitlab.com/adsmurai/solutions-engineering/cariola-offline-conversions#readme",
+  "dependencies": {
+    "axios": "^0.27.2"
+  }
 }
