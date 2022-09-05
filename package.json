@@ -1,0 +1,19 @@
+{
+  "name": "cariola-offline-conversions",
+  "version": "1.0.0",
+  "description": "offline conversions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/adsmurai/solutions-engineering/cariola-offline-conversions.git"
+  },
+  "author": "santiago.martinez1",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/adsmurai/solutions-engineering/cariola-offline-conversions/issues"
+  },
+  "homepage": "https://gitlab.com/adsmurai/solutions-engineering/cariola-offline-conversions#readme"
+}
