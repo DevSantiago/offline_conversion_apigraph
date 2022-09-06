@@ -1,10 +1,10 @@
-const axios = require('axios').default
+const axios = require('axios').default;
 
 
 const getEvents = async() => {
 
-    const token = 'AZRQm5WgK8P8hzc9tTWPeU8x92zfFx8fEFm21'
-    const endpoint = 'https://app.saludtv.net/api_fb/wsdl.php'
+    const token = 'AZRQm5WgK8P8hzc9tTWPeU8x92zfFx8fEFm21';
+    const endpoint = 'https://app.saludtv.net/api_fb/wsdl.php';
 
     try {
         const request = await axios({
@@ -14,12 +14,12 @@ const getEvents = async() => {
                 'Content-Type': 'application/json',
                 'Authorization': `${token}`
             }
-        })
+        });
     
-        return request.data
+        return request.data;
 
     } catch (error) {
-        console.log(error.data)
+        console.log(error.data);
     }
 }
 
