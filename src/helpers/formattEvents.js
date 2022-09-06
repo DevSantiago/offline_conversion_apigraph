@@ -17,7 +17,7 @@ const emptyValidation = (event) => {
     for(let property in event){
         if(event[property] === ""){
             delete event[property];
-        } else {
+        } else if(ven) {
             lowerCase(event[property]);
         }
     }
