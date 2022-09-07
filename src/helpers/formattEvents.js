@@ -88,7 +88,7 @@ const formatUserData = (user_data) => {
 
 
 const formatCustomData = (custom_data) => {
-
+    
 }
 
 module.exports = formattConversion;
