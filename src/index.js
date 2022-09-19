@@ -1,5 +1,5 @@
-const get_events = require('./helpers/getEvents');
-const formatt_events = require('./helpers/formattEvents');
+const get_events = require('./services/getEvents');
+const formatt_events = require('./services/formattEvents');
 
 const app = async() => {
     
@@ -12,5 +12,5 @@ const app = async() => {
 
 
 app()
-    .then(msg => console.log(msg))
+    .then(msg => console.dir(msg, {depth: null}))
     .catch(msg => console.log(msg));
