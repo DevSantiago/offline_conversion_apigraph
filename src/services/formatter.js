@@ -20,43 +20,48 @@ const formatUserData = (user_data) => {
     for(key in user_data){
         if (user_data[key] === "") {
             delete user_data[key];
-        } else {
-            switch (key) {
-                case "ph":
-                    user_data["ph"] = hash(user_data["ph"]);
-                    break;
-            
-                case "ct":
-                    user_data["ct"] = deleteSpacesCt(user_data["ct"].toLowerCase());
-                    break;
-                
-                case "country":
-                    user_data["country"] = hash(getCodeCountry(user_data["country"].toLowerCase()));
-                    break;
+            continue;
+        }
 
-                case "fn":
-                    user_data["fn"] = hash(validateFirstNameOrLastName(user_data["fn"].toLowerCase()));
-                    break;
-                
-                case "ge":
-                    user_data["ge"];
-                    break;
+        switch (key) {
+            case "ph":
+                user_data["ph"] = hash(user_data["ph"]);
+                break;
 
-                case "ln": 
-                    user_data["ln"] = hash(validateFirstNameOrLastName(user_data["ln"].toLowerCase()));
-                    break;
+            case "ct":
+                user_data["ct"] = hash(deleteSpacesCt(user_data["ct"].toLowerCase()));
+                break;
 
-                case "lead_id":
-                    user_data["lead_id"] === 0 ? delete user_data["lead_id"] : user_data["lead_id"];
-                    break;
+            case "country":
+                user_data["country"] = hash(getCountryCode(user_data["country"].toLowerCase()));
+                break;
 
-                case "st":
-                    user_data["st"] = hash(getCodeState(user_data["st"].toLowerCase()));
-                    break;  
+            case "fn":
+                user_data["fn"] = hash(getFirstOfFirstAndLastName(user_data["fn"].toLowerCase()));
+                break;
 
-                default:
-                    break;
-            }
+            case "ge":
+                user_data["ge"] = hash(user_data["ge"]);
+                break;
+
+            case "ln":
+                user_data["ln"] = hash(getFirstOfFirstAndLastName(user_data["ln"].toLowerCase()));
+                break;
+
+            case "lead_id":
+                if (user_data["lead_id"] === 0) delete user_data["lead_id"];
+                break;
+
+            case "st":
+                user_data["st"] = hash(getStateCode(user_data["st"].toLowerCase()));
+                break;
+
+            case "zp":
+                user_data["zp"] = hash(user_data["zp"]);
+                break;
+
+            default:
+                break;
         }
     }
 
@@ -68,38 +73,28 @@ const formatCustomData = (custom_data) => {
     for(key in custom_data){
         if (custom_data[key] === "" ) {
             delete custom_data[key];
-        } else {
-            switch (key) {
-                case "currency":
-                    custom_data["currency"];
-                    break;
+            continue;
+        }
 
-                case "value":
-                    custom_data["value"];
-                    break;
+        switch (key) {
+            case "content_category":
+                custom_data["content_category"] = custom_data["content_category"].toLowerCase();
+                break;
 
-                case "content_category":
-                    custom_data["content_category"] = custom_data["content_category"].toLowerCase();
-                    break;
+            case "num_items":
+                if (custom_data["num_items"] === "0") {
+                    delete custom_data["num_items"];
+                } else {
+                    custom_data["num_items"] = Number(custom_data["num_items"]);
+                }
+                break;
 
-                case "delivery_category":
-                    custom_data["delivery_category"];
-                    break;
+            case "predicted_ltv":
+                if (custom_data["predicted_ltv"] === 0) delete custom_data["predicted_ltv"];
+                break;
 
-                case "num_items":
-                    custom_data["num_items"] === "0" ? delete custom_data["num_items"] : custom_data["num_items"] = Number(custom_data["num_items"]);
-                    break;
-
-                case "order_id":
-                    custom_data["order_id"];
-                    break;
-
-                case "predicted_ltv":
-                    custom_data["predicted_ltv"] === 0 ? delete custom_data["predicted_ltv"] : custom_data["predicted_ltv"];
-                
-                default:
-                    break;
-            }
+            default:
+                break;
         }
         custom_data.lead_event_source = "In-house CRM";
         custom_data.event_source = "crm";
@@ -130,6 +125,7 @@ const getStateCode = (st) => {
             return abbreviation.toLocaleLowerCase();
         }
     }
+    return st;
 }
 
 const getFirstOfFirstAndLastName = (name) => {
@@ -138,7 +134,6 @@ const getFirstOfFirstAndLastName = (name) => {
 
 
 const hash = (value) => {
-    //console.log(value)
     return crypto.createHash("sha256").update(value).digest("hex");
 }
 
