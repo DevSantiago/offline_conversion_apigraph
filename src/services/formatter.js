@@ -49,8 +49,9 @@ const formatUserData = (user_data) => {
                 break;
 
             case "lead_id":
-                if (user_data["lead_id"] === 0) delete user_data["lead_id"];
-                // TODO añadir validación de que lead_id contenga solo numeros y su longitud sea > 10
+                if (user_data["lead_id"] === 0 || user_data["lead_id"].length < 10 || typeof user_data["lead_id"] === "string" || typeof user_data["lead_id"] === undefined){
+                    delete user_data["lead_id"];
+                } 
                 break;
 
             case "st":
@@ -108,6 +109,7 @@ const deleteSpacesCt = (ct) => {
     return ct.replace(/[\s-&@!"#$%&/()=?¡¨*`.,;/\{}]/g, "");
 }
 
+
 const getCountryCode = (country) => {
 
     if (country === "usa") country = "us";
@@ -128,6 +130,7 @@ const getStateCode = (st) => {
     }
     return st;
 }
+
 
 const getFirstOfFirstAndLastName = (name) => {
     return name.split(" ")[0];
