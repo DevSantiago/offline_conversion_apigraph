@@ -1,5 +1,5 @@
-const get_events = require('./services/getEvents');
-const formatt_events = require('./services/formattEvents');
+const get_events = require('./services/fetch');
+const formatt_events = require('./services/formatter');
 
 const app = async() => {
     
