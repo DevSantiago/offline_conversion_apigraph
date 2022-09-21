@@ -1,9 +1,9 @@
-const iso_countries = require("../helpers/iso3166.json");
-const fip_states = require("../helpers/fip_states.json");
+const isoCountries = require("../helpers/iso3166.json");
+const fipStates = require("../helpers/fip_states.json");
 const crypto = require("crypto");
 
 
-const formattConversion = (events) => {
+const formatConversions = (events) => {
 
     return events.map((event) => {
         return {
@@ -112,17 +112,11 @@ const deleteSpacesCt = (ct) => {
     return ct.replace(/[\s-&@!"#$%&/()=?¡¨*`.,;/\{}]/g, "");
 }
 
+const getCountryCode = (country) => {
 
-const changeSpacesAndSpecialsCharactersToUnderScore = (property) => {
-    return property.replace(/[\s-&@!"#$%&/()=?¡¨*`.,;/\{}]/g, "_");
-}
-
-
-const getCodeCountry = (country) => {
-
-    country === "usa" ? country = "us" : country;
-    for(const key in iso_countries){
-        if(country === iso_countries[key]){
+    if (country === "usa") country = "us";
+    for(const key in isoCountries){
+        if(country === isoCountries[key]){
             return key;
         }
     }
@@ -130,17 +124,16 @@ const getCodeCountry = (country) => {
 }
 
 
-const getCodeState = (st) => {
-    for(const abbrevation in fip_states){
-        if (st === fip_states[abbrevation].toLowerCase()) {
-            return abbrevation.toLocaleLowerCase();
+const getStateCode = (st) => {
+    for(const abbreviation in fipStates){
+        if (st === fipStates[abbreviation].toLowerCase()) {
+            return abbreviation.toLocaleLowerCase();
         }
     }
 }
 
-const validateFirstNameOrLastName = (fn_ln) => {
-    let fn_ln_arr = fn_ln.split(" ");
-    return fn_ln_arr[0];
+const getFirstOfFirstAndLastName = (name) => {
+    return name.split(" ")[0];
 }
 
 
@@ -150,4 +143,4 @@ const hash = (value) => {
 }
 
 
-module.exports = formattConversion;
+module.exports = formatConversions;
