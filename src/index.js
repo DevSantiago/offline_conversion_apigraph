@@ -1,13 +1,13 @@
-const get_events = require('./services/fetch');
-const formatt_events = require('./services/formatter');
+const getEvents = require('./services/fetch');
+const formatEvents = require('./services/formatter');
 
 const app = async() => {
     
-    const getEventsUnformatted = await get_events();
-    const setFormattEvents = formatt_events(getEventsUnformatted);
+    const getEventsUnformatted = await getEvents();
+    const setFormatEvents = formatEvents(getEventsUnformatted);
     // const uploaderEvents = await uploaderEvents();
 
-    return setFormattEvents;
+    return setFormatEvents;
 }
 
 

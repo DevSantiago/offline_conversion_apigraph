@@ -3,7 +3,7 @@ const axios = require('axios').default;
 
 const getEvents = async() => {
 
-    const token = 'AZRQm5WgK8P8hzc9tTWPeU8x92zfFx8fEFm21';
+    const token = 'AZRQm5WgK8P8hzc9tTWPeU8x92zfFx8fEFm21'; // TODO mover a archivo .env
     const endpoint = 'https://app.saludtv.net/api_fb/wsdl.php';
 
     try {
