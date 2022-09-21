@@ -50,6 +50,7 @@ const formatUserData = (user_data) => {
 
             case "lead_id":
                 if (user_data["lead_id"] === 0) delete user_data["lead_id"];
+                // TODO añadir validación de que lead_id contenga solo numeros y su longitud sea > 10
                 break;
 
             case "st":
