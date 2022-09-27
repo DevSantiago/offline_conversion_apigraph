@@ -49,9 +49,8 @@ const formatUserData = (user_data) => {
                 break;
 
             case "lead_id":
-                if (user_data["lead_id"] === 0 || user_data["lead_id"].length < 10 || typeof user_data["lead_id"] === "string" || typeof user_data["lead_id"] === undefined){
-                    delete user_data["lead_id"];
-                } 
+                delete user_data["lead_id"];
+                
                 break;
 
             case "st":

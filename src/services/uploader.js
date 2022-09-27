@@ -17,9 +17,9 @@ const postHttpToFacebook = async(payloadData) => {
             data: JSON.stringify({data: payloadData})
         })
         console.log("Post to Facebook nice!")
-        return (await request).statusText;
+        return (await request).data;
     } catch (error) {
-        console.log(error.response.data);
+        throw error.response.data.error;
     }
 }
 
