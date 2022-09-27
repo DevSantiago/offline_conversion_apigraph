@@ -1,0 +1,17 @@
+{
+    "steps": [
+      {
+        "name": "gcr.io/cloud-builders/gcloud",
+        "args": [
+          "functions",
+          "deploy",
+          "${_FUNCTION_NAME_}",
+          "--trigger-topic",
+          "${_TRIGGER_TOPIC_}",
+          "--runtime=nodejs16",
+          "--region=europe-west1",
+          "--entry-point=app"
+        ]
+      }
+    ]
+  }

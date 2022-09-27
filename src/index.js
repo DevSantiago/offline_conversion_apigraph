@@ -13,6 +13,4 @@ const app = async() => {
 }
 
 
-app()
-    .then(msg => console.log(msg))
-    .catch(msg => console.log(msg))
+module.exports.app = app;
