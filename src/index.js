@@ -1,15 +1,29 @@
+const getEvents = require('./services/fetch');
+const formatEvents = require('./services/formatter');
+const uploaderFacebook = require("./services/uploader");
+const sentry = require("@sentry/node");
+
+
+sentry.init({
+    dsn: process.env.SENTRY_DSN,
+    tracesSampleRate: 1.0,
+});
 
 
 const app = async() => {
-    
-    const getEvents = await get_events()
-    const formattEvents = formatt_events()
-    const uploaderEvents = await uploaderEvents()
 
-    return uploaderEvents
+    try {
+        const getEventsUnformatted = await getEvents();
+        const setFormatEvents = formatEvents(getEventsUnformatted);
+
+        return await uploaderFacebook(setFormatEvents);
+
+    } catch (error) {
+        sentry.captureException(error);
+        throw error;
+    }
+
 }
 
-
-app()
-    .then(msg => console.log(msg))
-    .catch(msg => console.log(msg))
+    
+module.exports.app = app;
