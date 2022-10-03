@@ -2,8 +2,9 @@
   "name": "cariola-offline-conversions",
   "version": "1.0.0",
   "description": "offline conversions",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
+    "start": "functions-framework --target=app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,6 +18,12 @@
   },
   "homepage": "https://gitlab.com/adsmurai/solutions-engineering/cariola-offline-conversions#readme",
   "dependencies": {
-    "axios": "^0.27.2"
+    "@sentry/node": "^7.14.0",
+    "@sentry/tracing": "^7.14.0",
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.2"
+  },
+  "devDependencies": {
+    "@google-cloud/functions-framework": "^3.1.2"
   }
 }
