@@ -49,6 +49,9 @@ const formatUserData = (user_data) => {
                 break;
 
             case "lead_id":
+
+                // removed by default because client does not have lead id.(they do not run lead ads)
+                
                 delete user_data["lead_id"];
                 
                 break;
